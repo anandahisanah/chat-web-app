@@ -46,6 +46,6 @@ class GuestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def guest_params
-      params.fetch(:guest, {})
+      params.require(:guest).permit(:id, :name)
     end
 end
