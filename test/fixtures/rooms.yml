@@ -1,0 +1,7 @@
+1:
+  id: 1
+  owner_id: 2
+
+2:
+  id: 2
+  owner_id: 1
