@@ -1,0 +1,34 @@
+1:
+  id: 1
+  room_id: 1
+  room_guest_id: 1
+  guest_id: 2
+  remark: "Hello!"
+
+2:
+  id: 2
+  room_id: 1
+  room_guest_id: 3
+  guest_id: 3
+  remark: "Hello Santi!"
+
+3:
+  id: 3
+  room_id: 1
+  room_guest_id: 1
+  guest_id: 2
+  remark: "Nice to meet you"
+
+4:
+  id: 4
+  room_id: 1
+  room_guest_id: 3
+  guest_id: 3
+  remark: "Nice to meet you too!"
+
+5:
+  id: 5
+  room_id: 1
+  room_guest_id: 3
+  guest_id: 3
+  remark: "Where are you from?"
