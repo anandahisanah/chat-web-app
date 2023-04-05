@@ -13,9 +13,9 @@ class RoomTest < ActiveSupport::TestCase
     assert_raise(StandardError) { rooms(3) }
   end
 
-  test "should not save room without owner_id" do
+  test "should not save room without owner_id and name" do
     room = Room.new
-    assert_not room.save, "Saved the room without a owner_id"
+    assert_not room.save, "Saved the room without a owner_id and name"
   end
 
   test "should have owner relation" do

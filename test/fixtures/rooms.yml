@@ -1,7 +1,9 @@
 1:
   id: 1
   owner_id: 2
+  name: 'Find new friend!'
 
 2:
   id: 2
   owner_id: 1
+  name: 'Developer room~'
