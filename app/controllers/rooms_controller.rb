@@ -1,6 +1,4 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[ show update destroy ]
-
   # GET /rooms
   def index
     @rooms = Room.all
@@ -10,6 +8,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1
   def show
+    @room = Room.find(params[:id])
     render json: @room
   end
 
@@ -18,34 +17,18 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
 
     if @room.save
-      render json: @room, status: :created, location: @room
+      render json: {
+        status: "success",
+        room: @room,
+      }, status: :created, location: @room
     else
       render json: @room.errors, status: :unprocessable_entity
     end
-  end
-
-  # PATCH/PUT /rooms/1
-  def update
-    if @room.update(room_params)
-      render json: @room
-    else
-      render json: @room.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /rooms/1
-  def destroy
-    @room.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_room
-      @room = Room.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def room_params
-      params.fetch(:room, {})
-    end
+  # Only allow a list of trusted parameters through.
+  def room_params
+    params.require(:room).permit(:id, :owner_id, :name)
+  end
 end

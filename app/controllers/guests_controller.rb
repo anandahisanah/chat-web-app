@@ -1,6 +1,4 @@
 class GuestsController < ApplicationController
-  before_action :set_guest, only: %i[ show update destroy ]
-
   # GET /guests
   def index
     @guests = Guest.all
@@ -10,6 +8,7 @@ class GuestsController < ApplicationController
 
   # GET /guests/1
   def show
+    @guest = Guest.find(params[:id])
     render json: @guest
   end
 
@@ -18,34 +17,19 @@ class GuestsController < ApplicationController
     @guest = Guest.new(guest_params)
 
     if @guest.save
-      render json: @guest, status: :created, location: @guest
+      render json: {
+        status: "success",
+        guest: @guest,
+      }, status: :created, location: @guest
     else
       render json: @guest.errors, status: :unprocessable_entity
     end
-  end
-
-  # PATCH/PUT /guests/1
-  def update
-    if @guest.update(guest_params)
-      render json: @guest
-    else
-      render json: @guest.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /guests/1
-  def destroy
-    @guest.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_guest
-      @guest = Guest.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def guest_params
-      params.require(:guest).permit(:id, :name)
-    end
+  # Only allow a list of trusted parameters through.
+  def guest_params
+    params.require(:guest).permit(:id, :name)
+  end
 end

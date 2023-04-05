@@ -1,15 +1,14 @@
-class ChatsController < ApplicationController
-  before_action :set_chat, only: %i[ show update destroy ]
+require "cgi"
 
+class ChatsController < ApplicationController
   # GET /chats
   def index
-    @chats = Chat.all
+    url = request.original_url
+    uri = URI.parse(url)
+    params = CGI.parse(uri.query)
+    room_id = params["room_id"].first
+    @chat = Chat.where(room_id: room_id)
 
-    render json: @chats
-  end
-
-  # GET /chats/1
-  def show
     render json: @chat
   end
 
@@ -18,34 +17,18 @@ class ChatsController < ApplicationController
     @chat = Chat.new(chat_params)
 
     if @chat.save
-      render json: @chat, status: :created, location: @chat
+      render json: {
+        status: "success",
+        chat: @chat,
+      }, status: :created, location: @chat
     else
       render json: @chat.errors, status: :unprocessable_entity
     end
-  end
-
-  # PATCH/PUT /chats/1
-  def update
-    if @chat.update(chat_params)
-      render json: @chat
-    else
-      render json: @chat.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /chats/1
-  def destroy
-    @chat.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_chat
-      @chat = Chat.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def chat_params
-      params.fetch(:chat, {})
-    end
+  # Only allow a list of trusted parameters through.
+  def chat_params
+    params.require(:chat).permit(:id, :room_id, :room_guest_id, :guest_id, :guest_name, :remark)
+  end
 end
