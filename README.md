@@ -2,6 +2,9 @@
 
 Simple Chat Web App using Ruby on Rails API for Back End and VueJS for Front End
 
+## Running Test
+Need to run migration first. Then, `bin/rails test`
+
 ## Back End
 Run migration
 
