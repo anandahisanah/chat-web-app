@@ -13,9 +13,9 @@ class ChatTest < ActiveSupport::TestCase
     assert_raise(StandardError) { chats(6) }
   end
 
-  test "should not save room without room_id, room_guest_id, guest_id and remark" do
+  test "should not save room without room_id, room_guest_id, guest_id, guest_name and remark" do
     chat = Chat.new
-    assert_not chat.save, "Saved the room without a room_id, room_guest_id, guest_id and remark"
+    assert_not chat.save, "Saved the room without a room_id, room_guest_id, guest_id, guest_name and remark"
   end
 
   test "should have room relation" do

@@ -6,5 +6,6 @@ class Chat < ApplicationRecord
   validates :room_id, presence: true
   validates :room_guest_id, presence: true
   validates :guest_id, presence: true
+  validates :guest_name, presence: true
   validates :remark, presence: true
 end

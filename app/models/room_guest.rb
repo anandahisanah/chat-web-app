@@ -1,5 +1,6 @@
 class RoomGuest < ApplicationRecord
-  belongs_to :chat
+  # belongs_to :room
+  # belongs_to :chat
 
   has_one :room, :class_name => "Room", :foreign_key => "id"
   has_one :guest, :class_name => "Guest", :foreign_key => "id"

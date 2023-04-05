@@ -3,6 +3,7 @@
   room_id: 1
   room_guest_id: 1
   guest_id: 2
+  guest_name: "Santi"
   remark: "Hello!"
 
 2:
@@ -10,6 +11,7 @@
   room_id: 1
   room_guest_id: 3
   guest_id: 3
+  guest_name: "Putri"
   remark: "Hello Santi!"
 
 3:
@@ -18,12 +20,14 @@
   room_guest_id: 1
   guest_id: 2
   remark: "Nice to meet you"
+  guest_name: "Santi"
 
 4:
   id: 4
   room_id: 1
   room_guest_id: 3
   guest_id: 3
+  guest_name: "Putri"
   remark: "Nice to meet you too!"
 
 5:
@@ -31,4 +35,5 @@
   room_id: 1
   room_guest_id: 3
   guest_id: 3
+  guest_name: "Putri"
   remark: "Where are you from?"

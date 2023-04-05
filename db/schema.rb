@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_04_033426) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_05_002803) do
   create_table "chats", force: :cascade do |t|
     t.integer "room_id"
     t.integer "room_guest_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_04_033426) do
     t.text "remark", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "guest_name"
     t.index ["guest_id"], name: "index_chats_on_guest_id"
     t.index ["room_guest_id"], name: "index_chats_on_room_guest_id"
     t.index ["room_id"], name: "index_chats_on_room_id"
@@ -42,6 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_04_033426) do
     t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["owner_id"], name: "index_rooms_on_owner_id"
   end
 
